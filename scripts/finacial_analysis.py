@@ -33,34 +33,43 @@ class FinancialAnalyzer:
         return data
 
     def plot_stock_data(self, data):
-        #   """Plot stock price with moving average."""
+        """Plot stock price with moving average."""
         # Drop rows with NaN values in 'Close' or 'SMA'
-       
         data = data.dropna(subset=['Close', 'SMA'])
         
+        # Create a line plot for 'Close' and 'SMA' using Plotly Express
         fig = px.line(data, x=data.index, y=['Close', 'SMA'], title='Stock Price with Moving Average')
+        # Display the plot
         fig.show()
 
     def plot_rsi(self, data):
+        """Plot the Relative Strength Index (RSI)."""
         # Drop rows with NaN values in 'RSI'
         data = data.dropna(subset=['RSI'])
+        
+        # Create a line plot for 'RSI'
         fig = px.line(data, x=data.index, y='RSI', title='Relative Strength Index (RSI)')
+        # Display the plot
         fig.show()
 
     def plot_ema(self, data):
+        """Plot stock price with Exponential Moving Average (EMA)."""
         # Drop rows with NaN values in 'Close' or 'EMA'
-
         data = data.dropna(subset=['Close', 'EMA'])
 
+        # Create a line plot for 'Close' and 'EMA'
         fig = px.line(data, x=data.index, y=['Close', 'EMA'], title='Stock Price with Exponential Moving Average')
+        # Display the plot
         fig.show()
 
     def plot_macd(self, data):
+        """Plot Moving Average Convergence Divergence (MACD)."""
         # Drop rows with NaN values in 'MACD' or 'MACD_Signal'
-
         data = data.dropna(subset=['MACD', 'MACD_Signal'])
 
+        # Create a line plot for 'MACD' and 'MACD_Signal'
         fig = px.line(data, x=data.index, y=['MACD', 'MACD_Signal'], title='Moving Average Convergence Divergence (MACD)')
+        # Display the plot
         fig.show()
 
     def get_financial_metrics(self, stock_name):
